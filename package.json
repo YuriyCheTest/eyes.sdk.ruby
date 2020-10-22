@@ -19,7 +19,7 @@
     "ruby:ci": "yarn && bundle install && yarn ruby",
     "ruby:test": "yarn ruby:create && yarn ruby:run:parallel && yarn ruby:report:merge && yarn ruby:report:sandbox",
     "ruby:test:prod": "[ \"TRAVIS_EVENT_TYPE\" = \"cron\" ] && yarn ruby:create:noskip || yarn ruby:create && yarn ruby:run:parallel && yarn ruby:report:merge && yarn ruby:report",
-    "ruby:create": "mkdir -p ./coverage_tests/spec/coverage/generic && cd coverage_tests && coverage-tests create-tests --path ./configuration",
+    "ruby:create": "mkdir -p ./coverage_tests/spec/coverage/generic && cd coverage_tests && coverage-tests create-tests --path ./configuration --coverage-tests-local-path ../tests.js",
     "ruby:create:noskip": "mkdir -p ./coverage_tests/spec/coverage/generic && cd coverage_tests && coverage-tests create-tests --path ./configuration -a",
     "ruby:report": "[ \"$TEST_REPORT_SANDBOX\" = \"False\" ] && yarn ruby:report:prod || yarn ruby:report:sandbox ",
     "ruby:report:sandbox": "cd coverage_tests && coverage-tests process-report --path ./configuration$( [ -z $TRAVIS_COMMIT ] || echo \" --reportId $TRAVIS_COMMIT\" )",
